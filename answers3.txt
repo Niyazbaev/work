@@ -1,0 +1,24 @@
+1!)
+select Track.TrackId, Track.Name, Track.UnitPrice, Genre.Name  
+from Track join Genre on Track.GenreId==Genre.GenreId 
+order by Track.Name;
+
+
+2!)
+select Track.name, count() AS c from Track  
+join Genre on Track.GenreId==Genre.GenreId 
+group by Genre.name HAVING c>100
+ORDER by c DESC;
+
+
+3!)
+select Customer.FirstName, Customer.LastName, States.StateName, States.StateAbbr from  Customer  
+left JOIN States on Customer.State=States.StateAbbr order by LastName;
+
+
+4!)
+select Customer.FirstName || " " || Customer.LastName as "Customer Name", Track.Name 
+from  Customer left join Track , Invoice , InvoiceLine  
+on Customer.CustomerId==Invoice.CustomerId 
+and Invoice.InvoiceId==InvoiceLine.InvoiceId 
+and InvoiceLine.TrackId==Track.TrackId;
